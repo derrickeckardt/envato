@@ -1,20 +1,24 @@
 #!/usr/bin/env python3
 import requests
+import pprint
 
 request_url = "https://api.envato.com/v1/discovery/search/search/item"
 headers = {
-    "Authorization" : "Bearer oVi4yPxk1bJ64Y2qOsLJ2D2ZlC3FpK4L",
+    "Authorization" : "Bearer ",
     }
 
-post = {
+
+query = {
     "site" : "themeforest.net",
     "term" : "awesome"
 }    
 
-def item_search(request_url, headers, post):
-    r = requests.post(request_url, headers=headers, json=post)
+
+def item_search(request_url, headers, query):
+    r = requests.get(request_url, headers=headers, query)
     return r
 
-item = item_search(request_url, headers, post)
 
-print(item)
+if __name__ == '__main__':
+    item = item_search(request_url, headers, query)
+    pprint.pprint(item.json())
