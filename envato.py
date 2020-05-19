@@ -17,15 +17,28 @@ if __name__ == '__main__':
     request_url = "https://api.envato.com/v1/discovery/search/search/item"
     query = {
         "site" : "themeforest.net",
-        "term" : "ugly "
+        "category": "cms-themes",
+        "sort_by": "updated",
+        "sort_direction": "desc",
+        "page_size" : "100"
     }    
     keyword_search = search(request_url, query, headers)
+    pprint.pprint(keyword_search.json()['links'])
 
     # specific item search
     request_url = "https://api.envato.com/v3/market/catalog/item"
     query = {
-        "id": "16335"
+        "id": "12170274"
     }
-
     item_search = search(request_url, query, headers)
-    pprint.pprint(item_search.json())
+    # pprint.pprint(item_search.json())
+    
+    # Popular by Site
+    request_url = "https://api.envato.com/v1/market/popular:themeforest.json"
+    site_popular = requests.get(request_url, headers=headers)
+    # pprint.pprint(site_popular.json())
+    
+    # Categories by Site
+    request_url = "https://api.envato.com/v1/market/categories:themeforest.json"
+    categories = requests.get(request_url,headers=headers)
+    # print(categories.json())
