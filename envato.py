@@ -20,10 +20,13 @@ if __name__ == '__main__':
         "category": "cms-themes",
         "sort_by": "updated",
         "sort_direction": "desc",
-        "page_size" : "100"
+        "page_size" : "100",
+        "page" : "5"
     }    
     keyword_search = search(request_url, query, headers)
-    pprint.pprint(keyword_search.json()['links'])
+    next_page_url = keyword_search.json()['links']['next_page_url']
+    print(next_page_url)
+
 
     # specific item search
     request_url = "https://api.envato.com/v3/market/catalog/item"
