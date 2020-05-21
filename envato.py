@@ -19,13 +19,13 @@ if __name__ == '__main__':
         "site" : "themeforest.net",
         "category": "cms-themes",
         "sort_by": "updated",
-        "sort_direction": "desc",
-        "page_size" : "100",
-        "page" : "5"
+        "sort_direction": "asc",
+        "page_size" : "10",
+        "page" : "60"
     }    
     keyword_search = search(request_url, query, headers)
-    next_page_url = keyword_search.json()['links']['next_page_url']
-    print(next_page_url)
+    next_page_url = keyword_search.json()#['links']#['next_page_url']
+    pprint.pprint(next_page_url)
 
 
     # specific item search
